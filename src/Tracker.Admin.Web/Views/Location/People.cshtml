@@ -1,0 +1,36 @@
+﻿@model Tracker.Admin.Web.Models.LocationViewModels.LocationPeopleViewModel
+
+@{
+    ViewBag.Title = $"People in {Model.LocationName}";
+}
+
+@section scripts{
+    <script src="~/js/mqttws31-min.js"></script>
+    <script src="~/js/MqttWs.js"></script>
+
+    <script>
+        $("document").ready(function () {
+            Tracker.MqttWsClient.Init(@Model.LocationId, '@Url.Action("GetPerson", "Person", null, "http", null)');
+        });
+    </script>
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div id="people-table-container" class="table-responsive">
+    <table id="people-table" class="table table-striped ">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Time of entry</th>
+        </tr>
+        @foreach (var person in Model.People)
+        {
+            <tr id="@person.CardUid">
+                <td><img src="@Url.Action("GetAvatar", "Person", new { id = person.Id })" alt="Person Image" class="img-circle" width="70" height="70" /></td>
+                <td><span>@person.FullName</span></td>
+                <td><span>@person.SwipeTime</span></td>
+            </tr>
+        }
+    </table>
+</div>
