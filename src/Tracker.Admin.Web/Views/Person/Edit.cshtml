@@ -15,7 +15,7 @@
 </div>
 <div class="row @(Model.Image != null?"visible-item":"hidden-item")" id="avatar-container">
     <div id="avatar" class="col-md-10">
-        <img src="@Url.Action("GetAvatar", "Person", new {id = Model.Id})" alt="Upload Image" class="avatar-img" />
+        <img src="@Url.Action("GetAvatar", "Person", new {id = Model.Id})" alt="Upload Image" class="avatar-img img-circle" width="150" height="150" />
     </div>
 </div>
 <div class="row">

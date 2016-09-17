@@ -32,7 +32,9 @@ namespace Tracker.Admin.Web.Data
                     trackerContext.Location.Add(headOffice);
                     trackerContext.SaveChanges();
 
-                    trackerContext.Device.AddRange(new Device { Name = "Main Entrance", IsActive = true, LocationId = headOffice.Id });
+                    trackerContext.Device.AddRange(
+                        new Device { Name = "Main Entrance", IsActive = true, LocationId = headOffice.Id }, 
+                        new Device { Name = "Side Entrance", IsActive = true, LocationId = headOffice.Id });
                     trackerContext.SaveChanges();
                 }
             }
