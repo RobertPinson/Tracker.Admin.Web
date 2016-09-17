@@ -6,7 +6,7 @@ if (typeof Tracker === "undefined") {
 Tracker.MqttWsClient = (function () {
 
     var client = new Paho.MQTT.Client("m21.cloudmqtt.com", 35480, "admin");
-   
+
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
@@ -62,7 +62,7 @@ Tracker.MqttWsClient = (function () {
     // called when a message arrives
     function onMessageArrived(message) {
         console.log("onMessageArrived:" + message.payloadString);
-      
+
         var data;
         try {
             data = JSON.parse(message.payloadString);
@@ -73,7 +73,7 @@ Tracker.MqttWsClient = (function () {
             return false;
         }
 
-        if (data.InLocation === "0") {
+        if (data.InLocation === 0) {
             console.log("Not in location removing from list card Id: " + data.CardId);
             //remove from list
             $("#" + data.CardId).remove();
@@ -98,14 +98,14 @@ Tracker.MqttWsClient = (function () {
                 swipeDate.getMinutes() +
                 ":" +
                 ("0" + swipeDate.getSeconds()).slice(-2);
-         
+
             $("#people-table").append(
                 '<tr id="' + data.CardId + '">  ' +
                     '<td><img src="/Person/GetAvatar?id='+ person.id +'"alt="Person Image" class="img-circle" width="70" height="70" /></td>'+
                     '<td><span>'+ person.fullName +'</span></td>'+
                     '<td><span>' + formatedDate + '</span></td>' +
                 '</tr>');
-            
+
         });
         return true;
     }

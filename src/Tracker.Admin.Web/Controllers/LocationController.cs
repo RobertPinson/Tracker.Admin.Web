@@ -139,15 +139,15 @@ namespace Tracker.Admin.Web.Controllers
                 join c in _context.Card on pc.CardId equals c.Id
                 where _context.Movement
                           .OrderByDescending(m => m.SwipeTime)
-                          .FirstOrDefault(m => m.CardId == c.Uid) != null && _context.Movement
+                          .FirstOrDefault(m => string.Equals(m.CardId, c.Uid, StringComparison.OrdinalIgnoreCase)) != null && _context.Movement
                           .OrderByDescending(m => m.SwipeTime)
-                          .FirstOrDefault(m => m.CardId == c.Uid).LocationId == locationId
+                          .FirstOrDefault(m => string.Equals(m.CardId, c.Uid, StringComparison.OrdinalIgnoreCase)).LocationId == locationId
                 select new
                 {
                     p.Id,
                     p.FirstName,
                     p.LastName,
-                    CardUid = c.Uid,
+                    CardUid = c.Uid.ToLower(),
                     SwipeTime = _context.Movement
                                     .Where(m => string.Equals(m.CardId, c.Uid, StringComparison.OrdinalIgnoreCase))
                                     .Max(m => m.SwipeTime)

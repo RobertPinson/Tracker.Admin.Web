@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0283B997-B260-4F26-9133-7A70BA08C0B1}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tracker.Admin.Web", "src\Tracker.Admin.Web\Tracker.Admin.Web.xproj", "{7092639B-6C9A-45C6-8A65-664AB627054A}"
