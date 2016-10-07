@@ -35,6 +35,18 @@ textarea {
     display: none;
 }
 
+.font-small {
+    font-size: 10px;
+}
+
+.font-medium {
+    font-size: 20px;
+}
+
+.font-large {
+    font-size: 30px;
+}
+
 /* Avatar display */
 .circular {
 	width: 300px;

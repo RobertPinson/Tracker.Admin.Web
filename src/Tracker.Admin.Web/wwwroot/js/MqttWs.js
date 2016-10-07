@@ -85,8 +85,12 @@ Tracker.MqttWsClient = (function () {
         getPerson(data.CardId, function(person) {
 
             console.log("Get Person Call back");
+            console.log("Swipe time: " + data.SwipeTime);
 
-            var swipeDate = new Date(data.SwipeTime);
+            var swipeDate = new Date(data.SwipeTime + 'UTC');
+
+            console.log("Local time: " + swipeDate.toString());
+
             var formatedDate = ("0" + swipeDate.getDate()).slice(-2) +
                 "/" +
                 ("0" + swipeDate.getMonth()).slice(-2) +
@@ -99,12 +103,14 @@ Tracker.MqttWsClient = (function () {
                 ":" +
                 ("0" + swipeDate.getSeconds()).slice(-2);
 
-            $("#people-table").append(
-                '<tr id="' + data.CardId + '">  ' +
+            var $newRow = $('<tr id="' + data.CardId + '">  ' +
                     '<td><img src="/Person/GetAvatar?id='+ person.id +'"alt="Person Image" class="img-circle" width="70" height="70" /></td>'+
                     '<td><span>'+ person.fullName +'</span></td>'+
                     '<td><span>' + formatedDate + '</span></td>' +
-                '</tr>');
+                '</tr>').hide();
+
+            $("#people-table").append($newRow);
+            $newRow.fadeIn(2000);
 
         });
         return true;
