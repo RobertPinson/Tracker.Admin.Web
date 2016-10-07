@@ -9,10 +9,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
-            Avatar
+            @Html.DisplayNameFor(model => model.Image)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -29,10 +29,10 @@
             <img src="@Url.Action("GetAvatar", "Person", new { id = item.Id })" class="img-circle" width="70" height="70" alt="Person Image" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            <span class="font-medium">@Html.DisplayFor(modelItem => item.FirstName)</span>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            <span class="font-medium">@Html.DisplayFor(modelItem => item.LastName)</span>
         </td>
         <td>
             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-xs">Edit</a> |
