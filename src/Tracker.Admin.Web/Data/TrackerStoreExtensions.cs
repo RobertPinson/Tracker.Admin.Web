@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Tracker.Admin.Web.Models;
 
@@ -16,9 +13,9 @@ namespace Tracker.Admin.Web.Data
 
             if (!trackerContext.Card.Any())
             {
-                trackerContext.Card.AddRange(new Card { Uid = "FD-A6-4A-95" }, new Card { Uid = "04-64-81-6A-D1-1E-80" });
-                trackerContext.Person.AddRange(new Person { FirstName = "Bill", LastName = "Gates" }, new Person { FirstName = "Joe", LastName = "Blogs" });
-                trackerContext.PersonCard.AddRange(new PersonCard { CardId = 1, PersonId = 1 }, new PersonCard { CardId = 2, PersonId = 2 });
+                trackerContext.Card.AddRange(new Card { Uid = "FD-A6-4A-95" }, new Card { Uid = "04-64-81-6A-D1-1E-80" }, new Card { Uid = "62-fb-37-45" }, new Card { Uid = "b4-b0-9d-fc" });
+                trackerContext.Person.AddRange(new Person { FirstName = "Bill", LastName = "Gates" }, new Person { FirstName = "Joe", LastName = "Blogs" },new Person { FirstName = "Joe", LastName = "Blogs" },new Person { FirstName = "Joe", LastName = "Blogs" });
+                trackerContext.PersonCard.AddRange(new PersonCard { CardId = 1, PersonId = 1 }, new PersonCard { CardId = 2, PersonId = 2 }, new PersonCard { CardId = 3, PersonId = 3 }, new PersonCard { CardId = 4, PersonId = 4 });
                 trackerContext.SaveChanges();
             }
 
@@ -33,7 +30,7 @@ namespace Tracker.Admin.Web.Data
                     trackerContext.SaveChanges();
 
                     trackerContext.Device.AddRange(
-                        new Device { Name = "Main Entrance", IsActive = true, LocationId = headOffice.Id }, 
+                        new Device { Name = "Main Entrance", IsActive = true, LocationId = headOffice.Id },
                         new Device { Name = "Side Entrance", IsActive = true, LocationId = headOffice.Id });
                     trackerContext.SaveChanges();
                 }
